@@ -2,4 +2,8 @@
     <string name="app_name">Android Anatomy</string>
     <string name="menu_home">beranda</string>
     <string name="menu_message">pesan</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Selamat Datang</string>
+    <string name="number_label">Nomor</string>
+    <string name="send_label">Kirim</string>
 </resources>
