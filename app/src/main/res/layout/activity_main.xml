@@ -27,12 +27,15 @@
             android:id="@+id/fragmentContainer" />
 
 
-
     </LinearLayout>
 
-  
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:clipToPadding="false"
+        tools:ignore="MissingClass" />
 
 
-
-    
 </androidx.drawerlayout.widget.DrawerLayout>
