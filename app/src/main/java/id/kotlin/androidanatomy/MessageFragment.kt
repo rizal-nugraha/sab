@@ -1,10 +1,13 @@
 package id.kotlin.androidanatomy
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import id.kotlin.androidanatomy.databinding.FragmentMessageBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +24,8 @@ class MessageFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private var _binding: FragmentMessageBinding? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -29,12 +34,24 @@ class MessageFragment : Fragment() {
         }
     }
 
+    private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_message, container, false)
+        _binding = FragmentMessageBinding.inflate(inflater, container, false)
+        binding.sendButton.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW).apply {
+                data = Uri.parse("smsto:${binding.numberEditText.text}")
+            }
+            if (intent.resolveActivity(activity!!.packageManager) != null)
+            {
+                startActivity(intent)
+            }
+        }
+        return binding.root
     }
 
     companion object {
@@ -57,3 +74,4 @@ class MessageFragment : Fragment() {
             }
     }
 }
+
