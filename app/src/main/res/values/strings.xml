@@ -6,4 +6,6 @@
     <string name="hello_blank_fragment">Selamat Datang</string>
     <string name="number_label">Nomor</string>
     <string name="send_label">Kirim</string>
+    <string name="open">Buka</string>
+    <string name="close">Kirim</string>
 </resources>

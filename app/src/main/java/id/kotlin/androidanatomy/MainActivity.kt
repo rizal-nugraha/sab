@@ -2,6 +2,8 @@ package id.kotlin.androidanatomy
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import id.kotlin.androidanatomy.databinding.ActivityMainBinding
 
@@ -31,7 +33,30 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        //  menit ke 34
+        val drawerToggle = ActionBarDrawerToggle(this, binding.drawer, R.string.open, R.string.close)
+        binding.drawer.addDrawerListener(drawerToggle)
+        drawerToggle.syncState()
 
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId){
+            android.R.id.home ->{
+                binding.drawer.openDrawer(GravityCompat.START)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    override fun onBackPressed() {
+        if (binding.drawer.isDrawerOpen(GravityCompat.START))
+        {
+            binding.drawer.closeDrawer(GravityCompat.START)
+        }else {
+            super.onBackPressed()
+        }
     }
 }
